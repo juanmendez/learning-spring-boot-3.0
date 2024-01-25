@@ -1,48 +1,45 @@
 # Learning Spring Boot 3.0
 
-This chapter is about learning configurations.
-Here we stared by undestanding how Spring Boot sets configuration based on application settings.
+## Chapter 2
 
-In this scenario we started reading our configurations set ins `resources/application.properties` and reading them in `MyController`
-
-We started by running `LearningSpringBootApplication`, and went to `http://localhost:1974`.
-In this way we saw the attributes being printed out.
-
-This chapter also covers other application environments. So to test this out we set to run in `dev` environment, and apply a profile setting when running the application. We also used another application setting `resources/application-dev.properties`. In this setting the port is in 1800, so here are a few screenshots of how this worked.
+This chapter covers the basics of annotations used for dependency injection.
+Here I learned the most basic type of injection is based on Beans. Other types of injections are based on Beans.. That's why in the first chapter I could track the bean added to the application context based on `context.getBean("nameOfBean")`
 
 
-<img width="1031" alt="Screenshot 2024-01-23 at 10 50 59 PM" src="https://github.com/juanmendez/spring-boot-essentials/assets/3371622/c4dff0a5-5c2c-4638-8821-9b6ea34c886a">
+I like the fact this chapter shows how to to see videos and add others based on html and also through json.
+What I don't like is going beyond with React. As for me my goal is to move business logic from the front-end to the back-end. I will concentrate in applying restful network calls and requests.
 
-
-<img width="923" alt="image" src="https://github.com/juanmendez/spring-boot-essentials/assets/3371622/70b1bef5-89b2-4d35-b62f-b7431e14e932">
-
-
-This chapter also talks about a few other configurations which can benefit dependency injection. Dependency injection in Spring Boot is implicit. Based on annotations, dependencies are wired and then available to others.
-
+Listing all videos
 ```
-@SpringBootApplication
-class LearningSpringBootApplication {
-
-    @Bean
-    @ConditionalOnProperty(prefix = "my.app", name = ["video"], havingValue = "youtube")
-    fun youtubeService(): VideoService = YoutubeService()
-
-    @Bean
-    @ConditionalOnProperty(prefix = "my.app", name = ["video"], havingValue = "vimeo")
-    fun vimeoService(): VideoService = VimeoService()
-}
+curl localhost:8080/api/videos 
 ```
 
-Here one of these methods is called and therefore the object returned is added to the dependency tree. For example `YoutubeService` is added to application context `youtubeService`.
-This bean was injected instead of `VimeoService` because the configuration applies `youtube`.
+response:
+```
+[{"name":"Need HELP with your SPRING BOOT 3 App?"},{"name":"Don't do THIS to your own CODE!"}]
+```
 
-`resources/application-dev.properties` has `my.app.video=youtube`
+Adding a new video
+```
+curl -v -X POST localhost:8080/api/videos -d '{"name": "Learning Spring Boot 3"}' -H 'Content-type:application/json'
+```
 
+response
+```
+{"name":"Learning Spring Boot 3"}
+```
 
+Html client
+
+<img width="694" alt="image" src="https://github.com/juanmendez/spring-boot-essentials/assets/3371622/e58a10d4-e1d6-437a-8cbf-9e190bf5c858">
 
 
 
 # Getting Started
+
+## Book
+* [Learning Spring Boot 3.0 by Greg L. Turnquist](https://learning.oreilly.com/library/view/learning-spring-boot/)
+* [Book samples](https://github.com/PacktPublishing/Learning-Spring-Boot-3.0-Third-Edition)
 
 ### Reference Documentation
 For further reference, please consider the following sections:
@@ -51,6 +48,7 @@ For further reference, please consider the following sections:
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.2/gradle-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.2/gradle-plugin/reference/html/#build-image)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#web)
+* [Spring Initializer](https://start.spring.io/)
 
 ### Guides
 The following guides illustrate how to use some features concretely:

@@ -19,10 +19,12 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	val springBoot = "org.springframework.boot"
+    implementation("$springBoot:spring-boot-starter-web")
+    implementation("$springBoot:spring-boot-starter-mustache")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("$springBoot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {
