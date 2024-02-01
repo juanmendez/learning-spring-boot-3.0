@@ -60,7 +60,7 @@ Html client
 # Getting Started
 
 ## For data storage
-* [https://spring.io/projects/spring-data-jpa](Official documentation)
+* [Official documentation](https://spring.io/projects/spring-data-jpa)
 * [What is JPA, highlighy recommended](https://www.youtube.com/watch?v=otinfgwkMbY&list=LL&index=1&pp=gAQBiAQB)
 * [Introduction to JPA](https://www.infoworld.com/article/3379043/what-is-jpa-introduction-to-the-java-persistence-api.html)
 
