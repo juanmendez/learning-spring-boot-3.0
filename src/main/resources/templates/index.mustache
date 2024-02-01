@@ -1,17 +1,61 @@
 <h1>Greetings Learning Spring Boot 3.0 fans!</h1>
 
 <p>
-  In this chapter, we are learning how to make
-  a web app using Spring Boot 3.0
+    In this chapter, we are learning how to use crud operations.
 </p>
 
 <ul>
-  {{#videos}}
-    <li>{{name}}</li>
-  {{/videos}}
+    {{#videos}}
+        <li>{{id}}
+            <ul>
+                <li>{{name}}</li>
+                <li>{{description}}</li>
+            </ul>
+        </li>
+    {{/videos}}
 </ul>
 
+<br/><br/>
+
 <form action="/new-video" method="post">
-  <input type="text" name="name">
-  <button type="submit">Submit</button>
+    <p>Enter a new video</p>
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+    <br/>
+    <label for="description">Description:</label>
+    <input type="text" name="description">
+    <button type="submit">Submit</button>
 </form>
+
+<br/><br/>
+
+<form action="/multi-field-search" method="post">
+    <p>Search for video</p>
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+    <br/>
+    <label for="description">Description:</label>
+    <input type="text" name="description">
+    <br/>
+    <button type="submit">Search</button>
+</form>
+<br/>
+<br/>
+<form action="/universal-search" method="post">
+    <p>Search for video by any field</p>
+    <label for="value">Search:</label>
+    <input type="text" name="value">
+    <br/>
+    <button type="submit">Search</button>
+</form>
+
+<br/>
+<br/>
+<form action="/universal-search-query" method="post">
+    <p>Search for video by any field</p>
+    <label for="value">Search:</label>
+    <input type="text" name="value">
+    <br/>
+    <button type="submit">Search</button>
+</form>
+<br/>

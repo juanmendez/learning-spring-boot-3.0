@@ -20,11 +20,20 @@ repositories {
 
 dependencies {
 	val springBoot = "org.springframework.boot"
+
+    // chapter 2
     implementation("$springBoot:spring-boot-starter-web")
     implementation("$springBoot:spring-boot-starter-mustache")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("$springBoot:spring-boot-starter-test")
+
+
+    // chapte 3
+    implementation("$springBoot:spring-boot-starter-data-jpa")
+    implementation("com.h2database:h2")
+
+    // default
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    testImplementation("$springBoot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {

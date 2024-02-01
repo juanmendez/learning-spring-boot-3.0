@@ -1,5 +1,27 @@
 # Learning Spring Boot 3.0
 
+## Chapter 3
+`ORM - Object Relational Mapping`
+
+`JPA - Java Persistance Api`
+JPA is not a tool or framework; rather, it defines a set of concepts that guide implementers.
+These concepts can be declared as JPQL
+
+`EntityManager`
+JPA provides a construct to build up queries known as EntityManager.
+
+JPQL - Java Persistence Query Language
+Spring Data JPA parses methods from the repository method and talks to EntityManager on your behalf.
+You can also declare your own flavor of JPQL api methods based on a @Query annotation.
+EntityManager provides APIs to assemble queries from JPQL.
+
+SQL - Structured Query Language
+You can also declare custom api methods in your repository and be annotated as @Query which is marked as pure SQL.
+
+`Persistant Context`
+A persistent context represents the entities which hold data and are qualified to be persisted in some persistent storage like a database.
+The data persists and outlives a session.
+
 ## Chapter 2
 
 This chapter covers the basics of annotations used for dependency injection.
@@ -36,6 +58,12 @@ Html client
 
 
 # Getting Started
+
+## For data storage
+* [https://spring.io/projects/spring-data-jpa](Official documentation)
+* [What is JPA, highlighy recommended](https://www.youtube.com/watch?v=otinfgwkMbY&list=LL&index=1&pp=gAQBiAQB)
+* [Introduction to JPA](https://www.infoworld.com/article/3379043/what-is-jpa-introduction-to-the-java-persistence-api.html)
+
 
 ## Book
 * [Learning Spring Boot 3.0 by Greg L. Turnquist](https://learning.oreilly.com/library/view/learning-spring-boot/)
