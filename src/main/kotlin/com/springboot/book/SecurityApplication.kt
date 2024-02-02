@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class QueryingDataApplication
+class SecurityApplication
 
 fun main(args: Array<String>) {
-    runApplication<QueryingDataApplication>(*args)
+    runApplication<SecurityApplication>(*args)
 }
