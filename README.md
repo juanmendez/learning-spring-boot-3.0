@@ -1,5 +1,17 @@
 # Learning Spring Boot 3.0
 
+## Chapter 4
+
+We are learning about how Spring Boot is clever to know the security framework is in place and starts up with a user and a hardcoded password which changes each time the session is started again.
+
+In this demo we learned how to set up a bean with a security set of users which are then injected into the framework's dicitionary. That's all it needs to be done with `SecurityConfiguration` file, and then Spring security framework kicks in..
+
+<img width="641" alt="image" src="https://github.com/juanmendez/spring-boot-essentials/assets/3371622/ada7b82d-e6b2-4aab-859c-84fb74af2e62">
+
+
+We are now presented with accessing the site based on the hardcoded users in that class.
+
+
 ## Chapter 3
 `ORM - Object Relational Mapping`
 
