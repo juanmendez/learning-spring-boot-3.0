@@ -1,4 +1,4 @@
-package com.springboot.book.data
+package com.springboot.book.data.video
 
 import jakarta.annotation.PostConstruct
 import org.springframework.data.domain.Example
@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service
 @Service
 class VideoService(private val videoRepository: VideoRepository) {
 
-    @PostConstruct
+    @PostConstruct // A standard Jakarta EE annotation that signals for this method to be run after the application has started
     fun initDatabase() {
         videoRepository.apply {
             save(
                 VideoEntity(
+                    "alice",
                     NewVideo(
                         "Need HELP with your SPRING BOOT 3 App?",
                         "SPRING BOOT 3 will only speed things up and make it super SIMPLE to serve templates and raw data."
@@ -21,6 +22,7 @@ class VideoService(private val videoRepository: VideoRepository) {
             )
             save(
                 VideoEntity(
+                    "alice",
                     NewVideo(
                         "Don't do THIS to your own CODE!",
                         "As a pro developer, never ever EVER do this to your code. Because you'll ultimately be doing it to YOURSELF!"
@@ -29,6 +31,7 @@ class VideoService(private val videoRepository: VideoRepository) {
             )
             save(
                 VideoEntity(
+                    "bob",
                     NewVideo(
                         "SECRETS to fix BROKEN CODE!",
                         "Discover ways to not only debug your code, but to regain your confidence and get back in the game as a software developer."
@@ -39,9 +42,9 @@ class VideoService(private val videoRepository: VideoRepository) {
     }
 
     fun getVideos(): List<VideoEntity> = videoRepository.findAll()
-    fun create(newVideo: NewVideo): VideoEntity {
+    fun create(username: String, newVideo: NewVideo): VideoEntity {
         return videoRepository.saveAndFlush(
-            VideoEntity(newVideo)
+            VideoEntity(username, newVideo)
         )
     }
 
@@ -73,5 +76,15 @@ class VideoService(private val videoRepository: VideoRepository) {
 
     fun searchByQuery(universalSearch: UniversalSearch) : List<VideoEntity> {
         return videoRepository.findAll(universalSearch.value)
+    }
+
+    fun delete(videoId: Long) {
+        videoRepository.findById(videoId)
+            .map { videoEntity ->
+                videoRepository.delete(videoEntity)
+                true
+            }.orElseThrow {
+                RuntimeException("No video at $videoId")
+            }
     }
 }

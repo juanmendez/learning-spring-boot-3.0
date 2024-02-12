@@ -1,7 +1,8 @@
-package com.springboot.book.data
+package com.springboot.book.data.video
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
+import org.springframework.security.access.prepost.PreAuthorize
 
 /**
  * JpaRepository comes loaded with various ways to fetch data, as shown with the following operations:
@@ -40,4 +41,9 @@ interface VideoRepository : JpaRepository<VideoEntity, Long> {
         """
     )
     fun findAll(universalTerm: String) : List<VideoEntity>
+
+
+    @PreAuthorize("#entity.username == authentication.name")
+    override fun delete(entity: VideoEntity)
+
 }

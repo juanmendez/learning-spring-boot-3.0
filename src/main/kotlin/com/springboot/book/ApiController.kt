@@ -1,8 +1,9 @@
 package com.springboot.book
 
-import com.springboot.book.data.NewVideo
-import com.springboot.book.data.VideoEntity
-import com.springboot.book.data.VideoService
+import com.springboot.book.data.video.NewVideo
+import com.springboot.book.data.video.VideoEntity
+import com.springboot.book.data.video.VideoService
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,9 +17,10 @@ class ApiController(private val videoService: VideoService) {
     @PostMapping("/api/videos") // Spring MVC’s annotation to capture POST /new-video calls and route them to this method.
     fun newVideo(
         @RequestBody newVideo: NewVideo,
+        authentication: Authentication,
         // Spring MVC’s annotation to signal that the incoming HTTP request body should be
         // deserialized via Jackson into the newVideo argument as a Video record
     ): VideoEntity? {
-        return videoService.create(newVideo)
+        return videoService.create(authentication.name, newVideo)
     }
 }

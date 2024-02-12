@@ -1,61 +1,49 @@
 <h1>Greetings Learning Spring Boot 3.0 fans!</h1>
 
 <p>
-    In this chapter, we are learning how to use crud operations.
+    In this chapter, we are learning how to make
+    a web app using Spring Boot 3.0
 </p>
+
+<h3>User Profile</h3>
+<ul>
+    <li>Username: {{authentication.name}}</li>
+    <li>Authorities: {{authentication.authorities}}</li>
+</ul>
+
+<form action="/logout" method="post">
+    <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+    <button type="submit">Logout</button>
+</form>
+
+<hr>
+
+<form action="/universal-search" method="post">
+    <label for="value">Search:</label>
+    <input type="text" name="value">
+    <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+    <button type="submit">Search</button>
+</form>
+
+{{#search}}
+    Searching: {{value}}
+{{/search}}
 
 <ul>
     {{#videos}}
-        <li>{{id}}
-            <ul>
-                <li>{{name}}</li>
-                <li>{{description}}</li>
-            </ul>
+        <li>
+            {{name}}
+            <form action="/delete/videos/{{id}}" method="post">
+                <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+                <button type="submit">Delete</button>
+            </form>
         </li>
     {{/videos}}
+
+    <form action="/new-video" method="post">
+        <input type="text" name="name">
+        <input type="text" name="description">
+        <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+        <button type="submit">Submit</button>
+    </form>
 </ul>
-
-<br/><br/>
-
-<form action="/new-video" method="post">
-    <p>Enter a new video</p>
-    <label for="name">Name:</label>
-    <input type="text" name="name">
-    <br/>
-    <label for="description">Description:</label>
-    <input type="text" name="description">
-    <button type="submit">Submit</button>
-</form>
-
-<br/><br/>
-
-<form action="/multi-field-search" method="post">
-    <p>Search for video</p>
-    <label for="name">Name:</label>
-    <input type="text" name="name">
-    <br/>
-    <label for="description">Description:</label>
-    <input type="text" name="description">
-    <br/>
-    <button type="submit">Search</button>
-</form>
-<br/>
-<br/>
-<form action="/universal-search" method="post">
-    <p>Search for video by any field</p>
-    <label for="value">Search:</label>
-    <input type="text" name="value">
-    <br/>
-    <button type="submit">Search</button>
-</form>
-
-<br/>
-<br/>
-<form action="/universal-search-query" method="post">
-    <p>Search for video by any field</p>
-    <label for="value">Search:</label>
-    <input type="text" name="value">
-    <br/>
-    <button type="submit">Search</button>
-</form>
-<br/>

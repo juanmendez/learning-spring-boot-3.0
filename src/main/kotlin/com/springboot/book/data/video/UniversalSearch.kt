@@ -1,3 +1,3 @@
-package com.springboot.book.data
+package com.springboot.book.data.video
 
 data class UniversalSearch(val value: String)
