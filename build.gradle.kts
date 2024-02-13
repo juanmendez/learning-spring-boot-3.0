@@ -21,22 +21,14 @@ repositories {
 dependencies {
 	val springBoot = "org.springframework.boot"
 
-    // chapter 2
-    implementation("$springBoot:spring-boot-starter-web")
     implementation("$springBoot:spring-boot-starter-mustache")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-
-    // chapte 3
+    implementation("$springBoot:spring-boot-starter-webflux")
+    implementation("$springBoot:spring-boot-starter-web")
     implementation("$springBoot:spring-boot-starter-data-jpa")
     implementation("com.h2database:h2")
-
-    // chapter 4
-    implementation("$springBoot:spring-boot-starter-security")
-    testImplementation("org.springframework.security:spring-security-test")
-
-    // default
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("$springBoot:spring-boot-starter-oauth2-client")
     testImplementation("$springBoot:spring-boot-starter-test")
+    testImplementation("$springBoot:spring-security-test")
 }
 
 tasks.withType<KotlinCompile> {

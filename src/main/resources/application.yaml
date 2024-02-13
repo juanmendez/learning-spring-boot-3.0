@@ -1,0 +1,15 @@
+server:
+  port: 1974
+
+spring:
+  mustache:
+    servlet:
+      expose-request-attributes: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: "your client id"
+            clientSecret: "your client secret"
+            scope: openid,profile,email,https://www.googleapis.com/auth/youtube
