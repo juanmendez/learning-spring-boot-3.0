@@ -1,8 +1,6 @@
 package com.springboot.book.data
 
 import jakarta.annotation.PostConstruct
-import org.springframework.data.domain.Example
-import org.springframework.data.domain.ExampleMatcher
 import org.springframework.stereotype.Service
 
 @Service
@@ -59,19 +57,21 @@ class VideoService(private val videoRepository: VideoRepository) {
             emptyList()
         }
     }
+
     fun search(universalSearch: UniversalSearch): List<VideoEntity> {
-        val value = universalSearch.value.trim()
-        val probe = VideoEntity(name = value, description = value)
-
-        val example = Example.of(
-            probe,
-            ExampleMatcher.matchingAny().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
-        )
-
-        return videoRepository.findAll(example)
+        return videoRepository.findAll(universalSearch.value.trim())
     }
 
-    fun searchByQuery(universalSearch: UniversalSearch) : List<VideoEntity> {
+    fun searchByQuery(universalSearch: UniversalSearch): List<VideoEntity> {
         return videoRepository.findAll(universalSearch.value)
+    }
+
+    @Throws(RuntimeException::class)
+    fun delete(id: Long): Boolean {
+        return videoRepository.findById(id)
+            .map { videoEntity ->
+                videoRepository.delete(videoEntity)
+                true
+            }.orElseThrow { RuntimeException("No video at $id") }
     }
 }

@@ -33,7 +33,9 @@ dependencies {
 
     // default
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
     testImplementation("$springBoot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
 }
 
 tasks.withType<KotlinCompile> {
