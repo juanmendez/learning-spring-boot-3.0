@@ -36,7 +36,9 @@ dependencies {
 
     testImplementation("$springBoot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-
+    testImplementation("org.testcontainers:postgresql")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testRuntimeOnly("org.postgresql:postgresql")
     testRuntimeOnly("org.hsqldb:hsqldb")
 }
 
