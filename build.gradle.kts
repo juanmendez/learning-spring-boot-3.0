@@ -26,10 +26,11 @@ dependencies {
     implementation("$springBoot:spring-boot-starter-mustache")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-
-    // chapte 3
+    // chapter 3
     implementation("$springBoot:spring-boot-starter-data-jpa")
     implementation("com.h2database:h2")
+
+    implementation("$springBoot:spring-boot-starter-security")
 
     // default
     implementation("org.jetbrains.kotlin:kotlin-reflect")
