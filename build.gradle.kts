@@ -36,6 +36,8 @@ dependencies {
 
     testImplementation("$springBoot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+
+    testRuntimeOnly("org.hsqldb:hsqldb")
 }
 
 tasks.withType<KotlinCompile> {

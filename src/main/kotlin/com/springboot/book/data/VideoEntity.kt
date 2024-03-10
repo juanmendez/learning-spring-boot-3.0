@@ -15,7 +15,7 @@ data class VideoEntity(
     val userName: String = "",
     val name: String = "",
     val description: String = "",
-) : Serializable {
+) {
     internal constructor(newVideo: NewVideo) : this(
         id = null,
         name = newVideo.name,
