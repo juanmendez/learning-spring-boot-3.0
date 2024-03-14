@@ -38,6 +38,14 @@ This bean was injected instead of `VimeoService` because the configuration appli
 
 `resources/application-dev.properties` has `my.app.video=youtube`
 
+## Chapter 6
+
+Chapter 6 is a continuation of Chapter 1. Here I made a simple test to ensure we are running the `test` profile.
+
+<img width="933" alt="image" src="https://github.com/juanmendez/learning-spring-boot-3.0/assets/3371622/5e708144-bb7f-4b0d-9c63-552df88b4e2c">
+
+<img width="1093" alt="image" src="https://github.com/juanmendez/learning-spring-boot-3.0/assets/3371622/70e23b93-bfb8-48f2-84fe-66fb471a478e">
+
 
 
 
